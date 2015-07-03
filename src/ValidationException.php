@@ -11,9 +11,9 @@
 
 namespace AltThree\Validator;
 
-use RuntimeException;
 use Illuminate\Contracts\Support\MessageProvider;
 use Illuminate\Support\MessageBag;
+use RuntimeException;
 
 /**
  * This is the validating exception class.
