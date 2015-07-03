@@ -40,7 +40,7 @@ class ValidationException extends RuntimeException implements MessageProvider
     {
         $this->errors = $errors;
 
-        parent::__construct('Validation has failed.')
+        parent::__construct('Validation has failed.');
     }
 
     /**
