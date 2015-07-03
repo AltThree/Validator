@@ -31,7 +31,7 @@ class ValidatingObserver
      */
     public function saving(Model $model)
     {
-        $this->performValidation($model);
+        $this->validate($model);
     }
 
     /**
@@ -45,7 +45,7 @@ class ValidatingObserver
      */
     public function restoring(Model $model)
     {
-        $this->performValidation($model);
+        $this->validate($model);
     }
 
     /**
