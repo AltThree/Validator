@@ -12,7 +12,6 @@
 namespace AltThree\Validator;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\MessageBag;
 
 /**
  * This is the model validating trait.
@@ -22,47 +21,10 @@ use Illuminate\Support\MessageBag;
 trait ValidatingTrait
 {
     /**
-     * The error messages from the validator.
-     *
-     * @var \Illuminate\Support\MessageBag
-     */
-    protected $validationErrors;
-
-    /**
      * Setup the validating observer.
      */
     public static function bootValidatingTrait()
     {
-        static::observe(new ValidatingObserver());
-    }
-
-    /**
-     * Is the model valid?
-     *
-     * @return bool
-     */
-    public function isValid()
-    {
-        $attributes = $this->getAttributes();
-
-        $messages = isset($this->validationMessages) ? $this->validationMessages : [];
-
-        $validator = Validator::make($attributes, $this->rules, $messages);
-
-        $result = $validator->passes();
-
-        $this->validationErrors = $validator->getMessageBag();
-
-        return $result;
-    }
-
-    /**
-     * Get the messages for the instance.
-     *
-     * @return \Illuminate\Support\MessageBag
-     */
-    public function getMessageBag()
-    {
-        return $this->validationErrors ?: new MessageBag();
+        static::observe(new ValidatingObserver(Validator::getFacadeRoot());
     }
 }

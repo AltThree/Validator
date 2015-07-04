@@ -11,6 +11,7 @@
 
 namespace AltThree\Validator;
 
+use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -20,6 +21,25 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ValidatingObserver
 {
+    /**
+     * The validation factory instance.
+     *
+     * @var \Illuminate\Contracts\Validation\Factory
+     */
+    protected $factory;
+
+    /**
+     * Create a new validating observer instance.
+     *
+     * @param \Illuminate\Contracts\Validation\Factory $factory
+     *
+     * @return void
+     */
+    public function __construct(Factory $factory)
+    {
+        $this->factory = $factory;
+    }
+
     /**
      * Validate the model on saving.
      *
@@ -53,8 +73,14 @@ class ValidatingObserver
      */
     protected function validate(Model $model)
     {
-        if (!$model->isValid()) {
-            throw new ValidationException($model->getMessageBag());
+        $attributes = $model->getAttributes();
+
+        $messages = isset($model->validationMessages) ? $model->validationMessages : [];
+
+        $validator = $this->factory->make($attributes, $model->rules, $messages);
+
+        if (!$validator->passes()) {
+            throw new ValidationException($validator->getMessageBag());
         }
     }
 }
