@@ -27,6 +27,6 @@ trait ValidatingTrait
      */
     public static function bootValidatingTrait()
     {
-        static::observe(new ValidatingObserver(Validator::getFacadeRoot());
+        static::observe(new ValidatingObserver(Validator::getFacadeRoot()));
     }
 }
