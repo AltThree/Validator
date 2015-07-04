@@ -34,6 +34,8 @@ class ValidatingMiddleware
      * Create a new validating middleware instance.
      *
      * @param \Illuminate\Contracts\Validation\Factory $factory
+     *
+     * @return void
      */
     public function __construct(Factory $factory)
     {
@@ -47,6 +49,8 @@ class ValidatingMiddleware
      * @param \Closure $next
      *
      * @throws \Watson\Validating\ValidationException
+     *
+     * @return void
      */
     public function handle($command, Closure $next)
     {
@@ -63,6 +67,8 @@ class ValidatingMiddleware
      * @param object $command
      *
      * @throws \Watson\Validating\ValidationException
+     *
+     * @return void
      */
     protected function validate($command)
     {

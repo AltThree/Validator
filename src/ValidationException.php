@@ -33,6 +33,8 @@ class ValidationException extends RuntimeException implements MessageProvider
      * Make a new validation exception instance.
      *
      * @param \Illuminate\Support\MessageBag $errors
+     *
+     * @return void
      */
     public function __construct(MessageBag $errors)
     {
