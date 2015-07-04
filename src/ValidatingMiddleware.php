@@ -31,7 +31,7 @@ class ValidatingMiddleware
     protected $factory;
 
     /**
-     * Create a new run analysis job handler instance.
+     * Create a new validating middleware instance.
      *
      * @param \Illuminate\Contracts\Validation\Factory $factory
      */
