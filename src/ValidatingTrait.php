@@ -30,8 +30,6 @@ trait ValidatingTrait
 
     /**
      * Setup the validating observer.
-     *
-     * @return void
      */
     public static function bootValidatingTrait()
     {

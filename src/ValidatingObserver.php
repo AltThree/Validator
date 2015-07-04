@@ -26,8 +26,6 @@ class ValidatingObserver
      * @param \Illuminate\Database\Eloquent\Model $model
      *
      * @throws \AltThree\Validator\ValidationException
-     *
-     * @return void
      */
     public function saving(Model $model)
     {
@@ -40,8 +38,6 @@ class ValidatingObserver
      * @param \Illuminate\Database\Eloquent\Model $model
      *
      * @throws \AltThree\Validator\ValidationException
-     *
-     * @return void
      */
     public function restoring(Model $model)
     {
@@ -54,8 +50,6 @@ class ValidatingObserver
      * @param \Illuminate\Database\Eloquent\Model $model
      *
      * @throws \AltThree\Validator\ValidationException
-     *
-     * @return void
      */
     protected function validate(Model $model)
     {
