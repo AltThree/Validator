@@ -85,7 +85,7 @@ class ValidatingObserver
 
         $validator = $this->factory->make($attributes, $model->rules, $messages);
 
-        if (!$validator->passes()) {
+        if ($validator->fails()) {
             throw new ValidationException($validator->getMessageBag());
         }
     }
