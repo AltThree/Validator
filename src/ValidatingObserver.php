@@ -90,7 +90,7 @@ class ValidatingObserver
         }
 
         if (method_exists($model, 'validate')) {
-            $model->validate()
+            $model->validate();
         }
     }
 }

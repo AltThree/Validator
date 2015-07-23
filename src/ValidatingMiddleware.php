@@ -81,7 +81,7 @@ class ValidatingMiddleware
         }
 
         if (method_exists($command, 'validate')) {
-            $command->validate()
+            $command->validate();
         }
     }
 
