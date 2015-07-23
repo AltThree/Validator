@@ -88,5 +88,9 @@ class ValidatingObserver
         if ($validator->fails()) {
             throw new ValidationException($validator->getMessageBag());
         }
+
+        if (method_exists($model, 'validate') && ($errors = $model->validate())) {
+            throw new ValidationException($errors);
+        }
     }
 }
