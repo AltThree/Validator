@@ -11,8 +11,8 @@
 
 namespace AltThree\Validator;
 
+use Illuminate\Contracts\Support\MessageBag;
 use Illuminate\Contracts\Support\MessageProvider;
-use Illuminate\Support\MessageBag;
 use RuntimeException;
 
 /**
@@ -25,14 +25,14 @@ class ValidationException extends RuntimeException implements MessageProvider
     /**
      * The validation errors.
      *
-     * @var \Illuminate\Support\MessageBag
+     * @var \Illuminate\Contracts\Support\MessageBag
      */
     protected $errors;
 
     /**
      * Make a new validation exception instance.
      *
-     * @param \Illuminate\Support\MessageBag $errors
+     * @param \Illuminate\Contracts\Support\MessageBag $errors
      *
      * @return void
      */
@@ -46,7 +46,7 @@ class ValidationException extends RuntimeException implements MessageProvider
     /**
      * Get the messages for the instance.
      *
-     * @return \Illuminate\Support\MessageBag
+     * @return \Illuminate\Contracts\Support\MessageBag
      */
     public function getMessageBag()
     {
