@@ -97,7 +97,7 @@ class ValidatingObserver
      *
      * @return array
      */
-    public function getRules($model)
+    public function getRules(Model $model)
     {
         $rules = $model->rules;
 
@@ -126,7 +126,7 @@ class ValidatingObserver
      *
      * @return string
      */
-    public function addExceptId($model, $rule)
+    public function addExceptId(Model $model, $rule)
     {
         $chunks = explode(',', $rule);
 
