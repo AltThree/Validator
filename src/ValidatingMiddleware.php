@@ -80,8 +80,8 @@ class ValidatingMiddleware
             throw new ValidationException($validator->getMessageBag());
         }
 
-        if (method_exists($command, 'validate') && ($errors = $command->validate())) {
-            throw new ValidationException($errors);
+        if (method_exists($command, 'validate')) {
+            $command->validate();
         }
     }
 
