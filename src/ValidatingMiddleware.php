@@ -48,7 +48,7 @@ class ValidatingMiddleware
      * @param object   $command
      * @param \Closure $next
      *
-     * @throws \Watson\Validating\ValidationException
+     * @throws \AltThree\Validator\ValidationException
      *
      * @return void
      */
@@ -66,7 +66,7 @@ class ValidatingMiddleware
      *
      * @param object $command
      *
-     * @throws \Watson\Validating\ValidationException
+     * @throws \AltThree\Validator\ValidationException
      *
      * @return void
      */
