@@ -38,7 +38,7 @@ class ValidationException extends RuntimeException implements MessageProvider
      */
     public function __construct(MessageBag $errors)
     {
-        $this->setErrors($errors);
+        $this->errors = $errors;
 
         parent::__construct('Validation has failed.');
     }
@@ -61,15 +61,5 @@ class ValidationException extends RuntimeException implements MessageProvider
     public function getMessageBag()
     {
         return $this->getErrors();
-    }
-
-    /**
-     * Sets the validation errors.
-     *
-     * @param \Illuminate\Support\MessageBag $errors
-     */
-    public function setErrors(MessageBag $errors)
-    {
-        $this->errors = $errors;
     }
 }

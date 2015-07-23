@@ -31,13 +31,4 @@ class ValidationExceptionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('Illuminate\Support\MessageBag', $this->exception->getErrors());
     }
-
-    public function testGetsMessageBag()
-    {
-        $messageBagMock = Mockery::mock('Illuminate\Support\MessageBag');
-
-        $this->exception->setErrors($messageBagMock);
-
-        $this->assertEquals($messageBagMock, $this->exception->getMessageBag());
-    }
 }
