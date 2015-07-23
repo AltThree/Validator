@@ -44,12 +44,22 @@ class ValidationException extends RuntimeException implements MessageProvider
     }
 
     /**
+     * Get the validation errors.
+     *
+     * @return \Illuminate\Support\MessageBag
+     */
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
+    /**
      * Get the messages for the instance.
      *
      * @return \Illuminate\Support\MessageBag
      */
     public function getMessageBag()
     {
-        return $this->errors;
+        return $this->getErrors();
     }
 }
