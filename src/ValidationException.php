@@ -52,4 +52,16 @@ class ValidationException extends RuntimeException implements MessageProvider
     {
         return $this->errors;
     }
+
+    /**
+     * Get the string representation of the exception.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        $lines = explode("\n", parent::__toString());
+
+        return array_shift($lines)." \nValidation errors:\n".implode($this->errors->all(), "\n")."\n".implode($lines, "\n");
+    }
 }
