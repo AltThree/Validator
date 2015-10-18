@@ -72,16 +72,16 @@ class ValidatingMiddleware
      */
     protected function validate($command)
     {
+        if (method_exists($command, 'validate')) {
+            $command->validate();
+        }
+
         $messages = property_exists($command, 'validationMessages') ? $command->validationMessages : [];
 
         $validator = $this->factory->make($this->getData($command), $command->rules, $messages);
 
         if ($validator->fails()) {
             throw new ValidationException($validator->getMessageBag());
-        }
-
-        if (method_exists($command, 'validate')) {
-            $command->validate();
         }
     }
 
