@@ -83,6 +83,23 @@ class ValidatingObserver
 
         $messages = isset($model->validationMessages) ? $model->validationMessages : [];
 
+        if (method_exists($model, 'configure')) {
+            $arr = (array)$model::configure();
+            if (!empty($arr)) {
+                $intersect = array_intersect_key($model->rules, $arr);
+                foreach ($intersect as $k => $v) {
+                    if (strpos($v, 'in_config') === -1) continue;
+                    $func = explode('|', $v);
+                    foreach ($func as $m => $n) {
+                        if (strpos($n, 'in_config') === 0) {
+                            $func[$m] = 'in:' . implode(array_keys($arr[$k]), ',');
+                        }
+                    }
+                    $model->rules[$k] = implode('|', $func);
+                }
+            }
+        }
+
         $validator = $this->factory->make($attributes, $model->rules, $messages);
 
         if ($validator->fails()) {
