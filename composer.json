@@ -1,20 +1,12 @@
 {
-    "name": "alt-three/validator",
+    "name": "pegziq/validator",
     "description": "A Validation Wrapper For Laravel 5",
     "keywords": ["validator", "logging", "Validator", "Alt Three"],
     "license": "MIT",
     "authors": [
         {
-            "name": "James Brooks",
-            "email": "james@alt-three.com"
-        },
-        {
-            "name": "Graham Campbell",
-            "email": "graham@alt-three.com"
-        },
-        {
-            "name": "Joseph Cohen",
-            "email": "joe@alt-three.com"
+            "name": "pegzi",
+            "email": "pegziq@gmail.com"
         }
     ],
     "require": {
