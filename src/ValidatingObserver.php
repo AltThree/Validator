@@ -83,7 +83,7 @@ class ValidatingObserver
 
         $messages = isset($model->validationMessages) ? $model->validationMessages : [];
 
-        $validator = $this->factory->make($attributes, $model->rules, $messages);
+        $validator = $this->factory->make($attributes, $this->getRules($model), $messages);
 
         if ($validator->fails()) {
             throw new ValidationException($validator->getMessageBag());
@@ -92,5 +92,58 @@ class ValidatingObserver
         if (method_exists($model, 'validate')) {
             $model->validate();
         }
+    }
+
+    /**
+     * Get the model validation rules.
+     *
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
+     * @return array
+     */
+    public function getRules(Model $model)
+    {
+        $rules = $model->rules;
+
+        if (!$model->exists) {
+            return $rules;
+        }
+
+        foreach ($rules as $field => $ruleset) {
+            $ruleset = is_string($ruleset) ? explode('|', $ruleset) : $ruleset;
+
+            foreach ($ruleset as $rule) {
+                if (starts_with($rule, 'unique')) {
+                    $rules[$field] = $this->addExceptId($model, $rule);
+                }
+            }
+        }
+
+        return $rules;
+    }
+
+    /**
+     * Add except id to unique rules.
+     *
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param string                              $rule
+     *
+     * @return string
+     */
+    public function addExceptId(Model $model, $rule)
+    {
+        $chunks = explode(',', $rule);
+
+        if ($chunks >= 1) {
+            if (!isset($chunks[2]) || strtolower($chunks[2]) === 'null') {
+                $chunks[2] = $model->getKey();
+            }
+
+            if (!isset($chunks[3])) {
+                $chunks[3] = $model->getKeyName();
+            }
+        }
+
+        return implode(',', $chunks);
     }
 }
