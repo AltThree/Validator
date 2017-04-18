@@ -100,7 +100,7 @@ class ValidatingMiddleware
             $name = $property->getName();
             $value = $property->getValue($command);
 
-            if (in_array($name, ['rules', 'validationMessages'], true) || is_object($value)) {
+            if (in_array($name, ['rules', 'validationMessages'], true)) {
                 continue;
             }
 
