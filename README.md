@@ -18,7 +18,7 @@ Instead, you may of course manually update your require block and run `composer 
 ```json
 {
     "require": {
-        "alt-three/validator": "^1.0"
+        "alt-three/validator": "^2.0"
     }
 }
 ```
