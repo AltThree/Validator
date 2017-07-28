@@ -13,14 +13,14 @@ namespace AltThree\Tests\Validator;
 
 use AltThree\Validator\ValidationException;
 use Illuminate\Support\MessageBag;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This is the validation exception test class.
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class ValidationExceptionTest extends PHPUnit_Framework_TestCase
+class ValidationExceptionTest extends TestCase
 {
     public function testExceptionMessageIsCorrect()
     {
