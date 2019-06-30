@@ -1,6 +1,6 @@
 {
     "name": "alt-three/validator",
-    "description": "A Validation Wrapper For Laravel 5",
+    "description": "A validation wrapper for Laravel 5,
     "keywords": ["validator", "logging", "Validator", "Alt Three"],
     "license": "MIT",
     "authors": [
