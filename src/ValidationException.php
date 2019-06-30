@@ -64,6 +64,6 @@ class ValidationException extends RuntimeException implements MessageProvider
     {
         $lines = explode("\n", parent::__toString());
 
-        return array_shift($lines)." \nValidation errors:\n".implode($this->errors->all(), "\n")."\n".implode($lines, "\n");
+        return array_shift($lines)." \nValidation errors:\n".implode("\n", $this->errors->all())."\n".implode("\n", $lines);
     }
 }
