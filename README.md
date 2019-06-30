@@ -1,6 +1,10 @@
 # Alt Three Validator
 
-A validation wrapper for Laravel 5.
+[![Build Status](https://img.shields.io/travis/AltThree/Validator/master.svg?style=flat-square)](https://travis-ci.org/AltThree/Validator)
+[![StyleCI](https://github.styleci.io/repos/38510192/shield?branch=master)](https://github.styleci.io/repos/38510192)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+
+**A validation wrapper for Laravel 5.**
 
 
 ## Installation
